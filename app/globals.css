@@ -565,14 +565,7 @@ dialog[open] {
 }
 
 /* === IMAGE LOAD FADE === */
-img {
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-out-quart);
-}
-
-img.loaded {
-  opacity: 1;
-}
+/* Removed - causing images not to load. Images now show immediately. */
 
 /* === FORM VALIDATION === */
 @keyframes shake {
