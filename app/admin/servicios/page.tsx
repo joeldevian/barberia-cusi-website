@@ -16,6 +16,18 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic';
 
+interface Servicio {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  precio: string;
+  duracion_minutos: number;
+  categoria: string;
+  activo: boolean;
+  popular: boolean;
+  orden_visualizacion: number;
+}
+
 export default async function ServiciosAdminPage() {
   const session = await auth();
 
@@ -29,12 +41,12 @@ export default async function ServiciosAdminPage() {
     .order('orden_visualizacion');
 
   // Agrupar por categoría
-  const serviciosPorCategoria = (todosServicios || []).reduce((acc, servicio) => {
+  const serviciosPorCategoria = (todosServicios || []).reduce((acc, servicio: Servicio) => {
     const cat = servicio.categoria;
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(servicio);
     return acc;
-  }, {} as Record<string, typeof todosServicios>);
+  }, {} as Record<string, Servicio[]>);
 
   const categorias = [
     { value: 'corte', label: 'Cortes de Cabello', icon: '✂️' },
@@ -112,7 +124,7 @@ export default async function ServiciosAdminPage() {
                 {/* Grid de Servicios */}
                 <div className="p-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {serviciosCategoria.map((servicio) => (
+                    {serviciosCategoria.map((servicio: Servicio) => (
                       <div
                         key={servicio.id}
                         className={`
