@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import animation system */
+@import '../styles/animations.css';
+
+@layer base {
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-display: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900 antialiased;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+    text-wrap: balance;
+  }
+
+  h1 {
+    @apply text-display-lg leading-[0.95] tracking-[-0.02em];
+  }
+
+  h2 {
+    @apply text-display-md leading-[1] tracking-[-0.015em];
+  }
+
+  h3 {
+    @apply text-display-sm leading-[1.1] tracking-[-0.01em];
+  }
+
+  p {
+    @apply leading-relaxed;
+    text-wrap: pretty;
+    max-width: 70ch;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* High contrast enforcement for accessibility */
+  .text-muted {
+    @apply text-neutral-700;
+  }
+
+  /* Focus states for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500 rounded-sm;
+  }
+}
+
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    min-height: 44px; /* Touch target minimum */
+  }
+
+  .btn-primary {
+    @apply bg-brand-900 text-white hover:bg-brand-800 focus-visible:outline-brand-900;
+  }
+
+  .btn-accent {
+    @apply bg-accent-600 text-white hover:bg-accent-700 focus-visible:outline-accent-600;
+  }
+
+  .btn-outline {
+    @apply border-2 border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white focus-visible:outline-brand-900;
+  }
+
+  .btn-ghost {
+    @apply text-brand-900 hover:bg-neutral-100 focus-visible:outline-brand-900;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm min-h-[40px];
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg min-h-[52px];
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-sm border border-neutral-200;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all;
+    min-height: 44px; /* Touch target minimum */
+  }
+
+  .label {
+    @apply block text-sm font-semibold text-neutral-900 mb-2;
+  }
+
+  /* Gradient overlays for images */
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/40 to-transparent;
+  }
+
+  .gradient-overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/60 to-brand-950/30;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+}
+/* Hide TopBar on Historia page */
+.historia-page ~ header:first-of-type,
+body:has(.historia-page) > header:first-of-type {
+  display: none;
+}

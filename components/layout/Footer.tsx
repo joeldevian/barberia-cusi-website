@@ -1,0 +1,259 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { sucursales, getSucursalPrincipal } from '@/data/sucursales';
+import { formatearTelefono, generarEnlaceWhatsAppConsulta } from '@/lib/whatsapp';
+
+export default function Footer() {
+  const sucursalPrincipal = getSucursalPrincipal();
+  const anioActual = new Date().getFullYear();
+
+  return (
+    <footer className="bg-brand-950 text-white">
+      {/* Footer principal */}
+      <div className="py-16">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Columna 1: Sobre nosotros */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="relative w-12 h-12">
+                  <Image
+                    src="/images/brand/logo.webp"
+                    alt="Logo Barbería Cusi"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <div className="font-display font-bold text-xl">Barbería Cusi</div>
+                  <div className="text-neutral-400 text-xs">Ayacucho</div>
+                </div>
+              </div>
+              <p className="text-neutral-300 text-sm leading-relaxed mb-6">
+                La barbería familiar que define el estilo masculino en Ayacucho desde hace décadas.
+                Calidad, confianza y tradición.
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="https://www.facebook.com/BarberiaCusiAyacucho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-brand-900 hover:bg-accent-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="Facebook"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/cusi.barber"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-brand-900 hover:bg-accent-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="Instagram"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@cusi.barber"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-brand-900 hover:bg-accent-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="TikTok"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Columna 2: Enlaces rápidos */}
+            <div>
+              <h3 className="font-display font-bold text-lg mb-6">Enlaces Rápidos</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href="/historia"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Nuestra Historia
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/servicios"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Servicios y Precios
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/barberos"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Nuestro Equipo
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/sucursales"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Nuestras Sucursales
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/reservas"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Reservar Cita
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contacto"
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Columna 3: Servicios */}
+            <div>
+              <h3 className="font-display font-bold text-lg mb-6">Servicios</h3>
+              <ul className="space-y-3 text-sm text-neutral-300">
+                <li>Corte Clásico</li>
+                <li>Fade / Degradado</li>
+                <li>Diseño de Barba</li>
+                <li>Afeitado a Navaja</li>
+                <li>Coloración</li>
+                <li>Tratamiento Capilar</li>
+                <li>Servicio Premium</li>
+              </ul>
+            </div>
+
+            {/* Columna 4: Contacto */}
+            <div>
+              <h3 className="font-display font-bold text-lg mb-6">Contacto</h3>
+              <ul className="space-y-4">
+                <li className="flex gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <div>
+                    <p className="text-neutral-300 text-sm">
+                      {sucursalPrincipal.direccion}
+                    </p>
+                    <p className="text-neutral-400 text-xs mt-1">
+                      {sucursalPrincipal.ciudad}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <a
+                    href={`tel:${sucursalPrincipal.telefono}`}
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm"
+                  >
+                    {formatearTelefono(sucursalPrincipal.telefono)}
+                  </a>
+                </li>
+                <li className="flex gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5"
+                  >
+                    <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+                    <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+                  </svg>
+                  <a
+                    href={`mailto:${sucursalPrincipal.email}`}
+                    className="text-neutral-300 hover:text-accent-400 transition-colors text-sm break-all"
+                  >
+                    {sucursalPrincipal.email}
+                  </a>
+                </li>
+                <li className="flex gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <p className="text-neutral-300 text-sm">{sucursalPrincipal.horario}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-brand-900 py-6">
+        <div className="container-custom">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-400">
+            <p>
+              &copy; {anioActual} Barbería Cusi. Todos los derechos reservados.
+            </p>
+            <p className="text-xs">
+              Hecho con dedicación en Ayacucho, Perú
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
