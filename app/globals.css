@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import animation system */
-@import '../styles/animations.css';
-
 @layer base {
   :root {
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -169,4 +166,527 @@
 .historia-page ~ header:first-of-type,
 body:has(.historia-page) > header:first-of-type {
   display: none;
+}
+
+/* ============================================
+   BARBERÍA CUSI - SISTEMA DE ANIMACIONES
+   Premium motion system for frontend
+   ============================================ */
+
+/* === TIMING & EASING SYSTEM === */
+:root {
+  /* Natural deceleration curves */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Entrance/exit timing */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --duration-entrance: 600ms;
+}
+
+/* === FADE IN ANIMATIONS === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* === SCALE ANIMATIONS === */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleInUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* === BLUR REVEAL (PREMIUM) === */
+@keyframes blurReveal {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* === SLIDE ANIMATIONS === */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* === GLOW PULSE === */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.6);
+  }
+}
+
+/* === FLOAT ANIMATION === */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === UTILITY CLASSES === */
+.animate-fade-in {
+  animation: fadeIn var(--duration-base) var(--ease-out-quart);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--duration-entrance) var(--ease-out-quint);
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown var(--duration-entrance) var(--ease-out-quint);
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft var(--duration-entrance) var(--ease-out-quint);
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight var(--duration-entrance) var(--ease-out-quint);
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--duration-base) var(--ease-out-quart);
+}
+
+.animate-scale-in-up {
+  animation: scaleInUp var(--duration-entrance) var(--ease-out-quint);
+}
+
+.animate-blur-reveal {
+  animation: blurReveal var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-slide-in-up {
+  animation: slideInUp var(--duration-base) var(--ease-out-quart);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* === STAGGER DELAYS === */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* === HOVER EFFECTS === */
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-out-quart),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-out-quart);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-glow {
+  transition: box-shadow var(--duration-base) var(--ease-out-quart);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.4);
+}
+
+/* === BUTTON PRESS EFFECT === */
+.btn-press {
+  transition: transform var(--duration-instant) var(--ease-out-quart);
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* === SCROLL REVEAL (Intersection Observer) === */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-entrance) var(--ease-out-quint),
+              transform var(--duration-entrance) var(--ease-out-quint);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-blur {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-out-expo),
+              filter var(--duration-slow) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.scroll-reveal-blur.revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* === STAGGER SYSTEM (CSS Custom Properties) === */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp var(--duration-entrance) var(--ease-out-quint) forwards;
+  animation-delay: calc(var(--stagger-index, 0) * 50ms);
+}
+
+/* === LOADING STATES === */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* === SPINNER === */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scroll-reveal,
+  .scroll-reveal-blur {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  
+  .stagger-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* === FOCUS VISIBLE (ACCESSIBILITY) === */
+*:focus-visible {
+  outline: 2px solid oklch(0.65 0.2 var(--accent-hue));
+  outline-offset: 2px;
+  transition: outline-offset var(--duration-instant) var(--ease-out-quart);
+}
+
+/* === PAGE TRANSITION === */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageEnter var(--duration-base) var(--ease-out-quart);
+}
+
+/* === MODAL/DIALOG ANIMATIONS === */
+@keyframes modalBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalContent {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+dialog::backdrop {
+  animation: modalBackdrop var(--duration-base) var(--ease-out-quart);
+  backdrop-filter: blur(4px);
+}
+
+dialog[open] {
+  animation: modalContent var(--duration-base) var(--ease-out-quart);
+}
+
+/* === IMAGE LOAD FADE === */
+img {
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out-quart);
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+/* === FORM VALIDATION === */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.shake {
+  animation: shake 0.4s var(--ease-out-quart);
+}
+
+@keyframes checkMark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.check-mark {
+  stroke-dasharray: 100;
+  animation: checkMark 0.3s var(--ease-out-quart) forwards;
+}
+
+/* === ANIMATED BORDER SPIN === */
+@keyframes borderRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card-border-animate {
+  position: relative;
+}
+
+.card-border-animate::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+    oklch(0.65 0.2 var(--accent-hue)),
+    oklch(0.55 0.25 calc(var(--accent-hue) + 20)),
+    oklch(0.65 0.2 var(--accent-hue)),
+    oklch(0.55 0.25 calc(var(--accent-hue) + 20))
+  );
+  background-size: 200% 200%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: borderRotate 3s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+.card-border-animate:hover::before {
+  opacity: 1;
+}
+
+/* === ROTATING BORDER GLOW EFFECT === */
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateBorderGlow {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.card-rotating-border {
+  position: relative;
+  isolation: isolate;
+  border-radius: 0.75rem;
+}
+
+.card-rotating-border::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 0%,
+    transparent 30%,
+    #ff6b35 45%,
+    #ff8c42 55%,
+    #ff6b35 65%,
+    transparent 80%,
+    transparent 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotateBorderGlow 3s linear infinite;
+  pointer-events: none;
 }
