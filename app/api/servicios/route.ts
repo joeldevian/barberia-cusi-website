@@ -3,11 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 
 export const dynamic = 'force-dynamic';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export async function GET() {
   try {
     // Verificar variables de entorno
@@ -18,6 +13,12 @@ export async function GET() {
         { status: 500 }
       );
     }
+
+    // Crear cliente dentro de la función para asegurar que las variables estén disponibles
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    );
 
     const { data: serviciosActivos, error } = await supabase
       .from('servicios')
