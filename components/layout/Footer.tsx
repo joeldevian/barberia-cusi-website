@@ -8,15 +8,17 @@ export default function Footer() {
   const anioActual = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-950 text-white relative">
+    <footer className="bg-brand-950 text-white relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/footer/footer-bg.png"
           alt="Footer background"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-5"
           sizes="100vw"
+          quality={75}
+          priority={false}
         />
       </div>
 
