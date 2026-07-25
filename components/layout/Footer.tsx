@@ -18,9 +18,10 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-12 h-12">
                   <Image
-                    src="/images/brand/logo.webp"
+                    src="/images/brand/Logo.jpg"
                     alt="Logo Barbería Cusi"
                     fill
+                    sizes="48px"
                     className="object-contain"
                   />
                 </div>
