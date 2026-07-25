@@ -9,35 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // OKLCH color system - Premium Black & Gold Barbershop
-        // Primary brand: Deep black matching logo
+        // OKLCH color system - Modern urban barbershop
+        // Primary brand: Deep charcoal with subtle warmth
         brand: {
           50: 'oklch(0.97 0.005 280)',
-          100: 'oklch(0.94 0.008 280)',
-          200: 'oklch(0.88 0.010 280)',
-          300: 'oklch(0.75 0.012 280)',
-          400: 'oklch(0.60 0.015 280)',
-          500: 'oklch(0.45 0.018 280)',
-          600: 'oklch(0.35 0.020 280)',
-          700: 'oklch(0.25 0.022 280)',
-          800: 'oklch(0.18 0.024 280)',
-          900: 'oklch(0.12 0.026 280)',
-          950: 'oklch(0.08 0.028 280)',
+          100: 'oklch(0.92 0.008 280)',
+          200: 'oklch(0.82 0.012 280)',
+          300: 'oklch(0.72 0.015 280)',
+          400: 'oklch(0.62 0.018 280)',
+          500: 'oklch(0.52 0.020 280)',
+          600: 'oklch(0.42 0.022 280)',
+          700: 'oklch(0.32 0.024 280)',
+          800: 'oklch(0.22 0.026 280)',
+          900: 'oklch(0.15 0.028 280)',
+          950: 'oklch(0.10 0.030 280)',
         },
-        // Accent: Premium Gold matching logo (rich golden yellow)
+        // Accent: Amber/copper for energy and warmth
         accent: {
-          50: 'oklch(0.98 0.015 95)',   // Very light gold
-          100: 'oklch(0.95 0.035 95)',  // Light gold
-          200: 'oklch(0.90 0.065 95)',  // Soft gold
-          300: 'oklch(0.85 0.095 95)',  // Medium gold
-          400: 'oklch(0.80 0.125 95)',  // Rich gold
-          500: 'oklch(0.75 0.145 95)',  // True gold (main)
-          600: 'oklch(0.68 0.140 90)',  // Deep gold
-          700: 'oklch(0.60 0.130 85)',  // Dark gold
-          800: 'oklch(0.50 0.115 80)',  // Very dark gold
-          900: 'oklch(0.40 0.095 75)',  // Almost bronze
+          50: 'oklch(0.97 0.020 70)',
+          100: 'oklch(0.92 0.040 70)',
+          200: 'oklch(0.85 0.080 70)',
+          300: 'oklch(0.78 0.120 70)',
+          400: 'oklch(0.72 0.150 70)',
+          500: 'oklch(0.65 0.180 70)',
+          600: 'oklch(0.58 0.170 70)',
+          700: 'oklch(0.50 0.150 70)',
+          800: 'oklch(0.42 0.130 70)',
+          900: 'oklch(0.35 0.110 70)',
         },
-        // Neutral grays with warm tint
+        // Neutral grays with brand hue tint
         neutral: {
           50: 'oklch(0.98 0.003 280)',
           100: 'oklch(0.95 0.005 280)',

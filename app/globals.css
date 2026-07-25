@@ -669,9 +669,9 @@ dialog[open] {
     from var(--gradient-angle),
     transparent 0%,
     transparent 30%,
-    #D4AF37 45%,
-    #FFD700 55%,
-    #D4AF37 65%,
+    #ff6b35 45%,
+    #ff8c42 55%,
+    #ff6b35 65%,
     transparent 80%,
     transparent 100%
   );
