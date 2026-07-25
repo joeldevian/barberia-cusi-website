@@ -33,7 +33,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14">
               <Image
-                src="/images/brand/Logo.jpg"
+                src="/images/brand/Logo.webp"
                 alt="Logo Barbería Cusi"
                 fill
                 sizes="(max-width: 640px) 48px, 56px"

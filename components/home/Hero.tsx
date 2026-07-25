@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/inicio/principal.png"
+          src="/images/inicio/hero-banner.jpg"
           alt="Barbería Cusi - Interior de la barbería en Ayacucho"
           fill
           className="object-cover"

@@ -8,9 +8,20 @@ export default function Footer() {
   const anioActual = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-950 text-white">
+    <footer className="bg-brand-950 text-white relative">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/footer/footer-bg.png"
+          alt="Footer background"
+          fill
+          className="object-cover opacity-10"
+          sizes="100vw"
+        />
+      </div>
+
       {/* Footer principal */}
-      <div className="py-16">
+      <div className="py-16 relative z-10">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Columna 1: Sobre nosotros */}
@@ -18,7 +29,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative w-12 h-12">
                   <Image
-                    src="/images/brand/Logo.jpg"
+                    src="/images/brand/Logo.webp"
                     alt="Logo Barbería Cusi"
                     fill
                     sizes="48px"
@@ -243,7 +254,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-brand-900 py-6">
+      <div className="border-t border-brand-900 py-6 relative z-10">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-400">
             <p>
