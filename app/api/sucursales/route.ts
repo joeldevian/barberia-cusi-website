@@ -8,37 +8,42 @@ export async function GET() {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    // Verificar variables de entorno
     if (!supabaseUrl || !supabaseKey) {
       console.error('Missing Supabase environment variables');
       return NextResponse.json(
-        { error: 'Configuration error: Missing Supabase credentials' },
+        { error: 'Configuration error' },
         { status: 500 }
       );
     }
 
-    // Importar createClient dinámicamente
-    const { createClient } = await import('@supabase/supabase-js');
-    
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    // Usar fetch directo a la REST API de Supabase
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/sucursales?activo=eq.true&order=es_principal.desc,nombre.asc`,
+      {
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
-    const { data: sucursalesActivas, error } = await supabase
-      .from('sucursales')
-      .select('*')
-      .eq('activo', true)
-      .order('es_principal', { ascending: false })
-      .order('nombre', { ascending: true });
-
-    if (error) {
-      console.error('Supabase error:', error);
-      throw error;
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Supabase API error:', errorText);
+      throw new Error(`HTTP ${response.status}: ${errorText}`);
     }
 
-    return NextResponse.json(sucursalesActivas);
+    const sucursales = await response.json();
+    return NextResponse.json(sucursales);
+
   } catch (error) {
     console.error('Error al obtener sucursales:', error);
     return NextResponse.json(
-      { error: 'Error al cargar sucursales', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        error: 'Error al cargar sucursales', 
+        details: error instanceof Error ? error.message : 'Unknown error' 
+      },
       { status: 500 }
     );
   }
