@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function GET() {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
     // Verificar variables de entorno
-    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    if (!supabaseUrl || !supabaseKey) {
       console.error('Missing Supabase environment variables');
       return NextResponse.json(
         { error: 'Configuration error: Missing Supabase credentials' },
@@ -14,11 +17,10 @@ export async function GET() {
       );
     }
 
-    // Crear cliente dentro de la función para asegurar que las variables estén disponibles
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    );
+    // Importar createClient dinámicamente
+    const { createClient } = await import('@supabase/supabase-js');
+    
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data: sucursalesActivas, error } = await supabase
       .from('sucursales')
