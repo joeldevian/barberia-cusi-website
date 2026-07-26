@@ -420,10 +420,16 @@ body:has(.historia-page) > header:first-of-type {
 
 /* === SCROLL REVEAL (Intersection Observer) === */
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity var(--duration-entrance) var(--ease-out-quint),
               transform var(--duration-entrance) var(--ease-out-quint);
+}
+
+/* Optional: Add animation class when JS is loaded */
+.js-loaded .scroll-reveal:not(.revealed) {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .scroll-reveal.revealed {
@@ -432,12 +438,19 @@ body:has(.historia-page) > header:first-of-type {
 }
 
 .scroll-reveal-blur {
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(20px);
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
   transition: opacity var(--duration-slow) var(--ease-out-expo),
               filter var(--duration-slow) var(--ease-out-expo),
               transform var(--duration-slow) var(--ease-out-expo);
+}
+
+/* Optional: Add animation when JS is loaded */
+.js-loaded .scroll-reveal-blur:not(.revealed) {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
 }
 
 .scroll-reveal-blur.revealed {
@@ -448,6 +461,12 @@ body:has(.historia-page) > header:first-of-type {
 
 /* === STAGGER SYSTEM (CSS Custom Properties) === */
 .stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: Add animation when JS is loaded */
+.js-loaded .stagger-item {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp var(--duration-entrance) var(--ease-out-quint) forwards;

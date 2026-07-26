@@ -92,6 +92,9 @@ export function initPageTransition() {
 
 // Initialize all animations
 export function initAnimations() {
+  // Mark that JS is loaded for progressive enhancement
+  document.documentElement.classList.add('js-loaded');
+  
   // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {

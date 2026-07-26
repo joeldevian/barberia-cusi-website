@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export async function GET() {
   try {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    let supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseKey) {
       console.error('Missing Supabase environment variables');
@@ -15,6 +15,9 @@ export async function GET() {
         { status: 500 }
       );
     }
+
+    // Limpiar la key: remover saltos de línea y tomar solo la primera línea válida
+    supabaseKey = supabaseKey.split('\n')[0].trim();
 
     // Usar fetch directo a la REST API de Supabase
     const response = await fetch(
